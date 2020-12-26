@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+</head>
+
+<body>
+    <h2>2020年12月25日20:05:38</h2>
+
+</body>
+<script>
+    /* resolve 和 reject 都是函数，其中调用 resolve 代表一切正常，reject 是出现异常时所调用的： */
+    new Promise(function (resolve, reject) {
+        setTimeout(function () {
+            console.log("First");
+            resolve();
+        }, 1000);
+    }).then(function () {
+        return new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                console.log("Second");
+                resolve();
+            }, 4000);
+        });
+    }).then(function () {
+        setTimeout(function () {
+            console.log("Third");
+        }, 3000);
+    });
+</script>
+
+</html>
